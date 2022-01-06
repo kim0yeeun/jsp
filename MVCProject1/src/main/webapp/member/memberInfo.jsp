@@ -15,7 +15,7 @@
 <!-- dto 로받았다 -->
 고객 번호 : ${memberDTO.memNum} <br/>
 고객 이름 :   ${memberDTO.memName} <br/>
-고객 가입일 :   <fmt:formatDate value="${memberDTO.memRegiDate}" pattern ="yyyy-mm-dd"/> <br/>
+고객 가입일 :   <fmt:formatDate value="${memberDTO.memRegiDate}" pattern ="yyyy-MM-dd"/> <br/>
 고객 아이디 :   ${memberDTO.memId} <br/>
 고객 연락처1 :   ${memberDTO.memPhone1} <br/>
 고객 연락처2 :   ${memberDTO.memPhone2} <br/>
@@ -23,7 +23,7 @@
 고객 이메일 :   ${memberDTO.memEmail} <br/>
 고객 성별 :  <c:if test = "${memberDTO.memGender=='M'}" > 남자 </c:if>
 					<c:if test = "${memberDTO.memGender=='F'}" > 여자 </c:if><br/>
-고객 생년월일 :<fmt:formatDate value="${memberDTO.memBirth}" pattern ="yyyy-mm-dd"/> <br/>
+고객 생년월일 :<fmt:formatDate value="${memberDTO.memBirth}" pattern ="yyyy-MM-dd"/> <br/>
 
 <a href ="memberList.mem">회원리스트</a>
 <a href ="memberModify.mem?num=${memberDTO.memNum }">회원수정</a>

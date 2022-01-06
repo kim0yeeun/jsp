@@ -5,13 +5,20 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.DAO.MemberDAO;
+import model.DTO.AuthInfo;
 import model.DTO.MemberDTO;
 
 public class MemberDropController {
 	public void execute (HttpServletRequest request, HttpServletResponse response) {
-		String memId = "ㅇㅇ"; // 임의의 사용자
+	
+		HttpSession session = request.getSession();
+	
+		// memid 를 바꾸 ㄹ필요 없움
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String memId = authInfo.getUserId() ;// 로그인 세션
 		String memPw = request.getParameter("memPw");
 		
 		// 멤버 다오를 이용해서 회원의 정보를 가져오자 
@@ -34,7 +41,8 @@ public class MemberDropController {
 				dao.MemberDelete(dto.getMemNum());
 				String contextPath = request.getContextPath();
 				try {
-					response.sendRedirect(  contextPath + "/");
+					session.invalidate(); //회원탈퇴하면 세션이 필요 없으니까 날린후에 
+					response.sendRedirect(  contextPath + "/"); // 메인으로 간다 
 				} catch (Exception e) {e.printStackTrace(); }
 				
 			}

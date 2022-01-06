@@ -17,8 +17,8 @@
 연락처2 :  ${memberDTO.memPhone2 }<br/>
 주소 :  ${memberDTO.memAddr }<br/>
 이메일 :  ${memberDTO.memEmail }<br/>
-성별 :  <c:if test="${memberDTO.memGender =='M' }">남자</c:if>
-	   		<c:if test="${memberDTO.memGender =='W' }">여자</c:if><br/>
+성별 :  <c:if test="${memberDTO.memGender  == 'M' }">남자</c:if>
+	   		<c:if test="${memberDTO.memGender  == 'F' }">여자</c:if><br/>
 생년월일 :  <fmt:formatDate value ="${memberDTO.memBirth }" pattern ="yyyy-MM-dd"/><br/>
 <a href="memberInfoModify.mem">내 정보 수정</a>
 </body>

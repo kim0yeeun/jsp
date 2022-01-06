@@ -1,6 +1,7 @@
 package controller.member;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import model.DAO.MemberDAO;
 import model.DTO.MemberDTO;
@@ -8,7 +9,8 @@ import model.DTO.MemberDTO;
 public class MemberPassController {
 	public String execute(HttpServletRequest request) {
 		String path = null;
-		String memId = "ㅇㅇ";
+		HttpSession session = request.getSession();
+		String memId = (String) session.getAttribute("id"); // 로그인 세션
 		String memPw = request.getParameter("memPw");
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = dao.selectUser(memId);

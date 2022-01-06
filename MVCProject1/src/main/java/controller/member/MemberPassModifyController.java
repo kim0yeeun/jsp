@@ -6,14 +6,22 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.DTO.AuthInfo;
 import model.DTO.MemberDTO;
 
 import model.DAO.MemberDAO;
 
 public class MemberPassModifyController {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String memId = "ㅇㅇ";
+		
+		HttpSession session = request.getSession();
+		
+		//String memId = (String)session.getAttribute("id"); 를 아래 두줄로 고침 memid에 줬으니까 memid를 하나하나 고칠 필요 없음
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String memId = authInfo.getUserId(); // 로그인 세션
+		
 		String memPw = request.getParameter("memPw");
 		String newMemPw = request.getParameter("newMemPw");
 		

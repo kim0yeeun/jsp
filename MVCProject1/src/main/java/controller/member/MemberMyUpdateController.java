@@ -7,8 +7,10 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.DAO.MemberDAO;
+import model.DTO.AuthInfo;
 import model.DTO.MemberDTO;
 
 public class MemberMyUpdateController {
@@ -17,8 +19,9 @@ public class MemberMyUpdateController {
 		try {
 			request.setCharacterEncoding("utf-8");
 		} catch (Exception e) {e.printStackTrace();}
-		
-		String memId = "ㅇㅇ"; // 임의의 사용자 아이디
+		HttpSession session = request.getSession();
+		//아래 찾아가면서 memId 를  authInfo로 수정
+		AuthInfo authInfo = (AuthInfo) session.getAttribute("authInfo"); // 로그인 세션
 		String memPw = request.getParameter("memPw");
 		String memName = request.getParameter("memName");
 		String memPhone1 = request.getParameter("memPhone1");
@@ -39,7 +42,11 @@ public class MemberMyUpdateController {
 		MemberDAO dao = new MemberDAO();
 		// 입력한 비밀번호와 DB에 있는 비밀번호가 서로 일치하는지 확인 
 		// 일치하지 않으면 alert 창을 출력한다. 
-		MemberDTO dto = dao.selectUser(memId); // 아이디를 이용해서 갖고옴 
+		
+		// MemberDTO dto = dao.selectUser(memId);
+		MemberDTO dto = dao.selectUser(authInfo.getUserId()); // 아이디를 이용해서 갖고옴 
+		
+		
 		if (!dto.getMemPw().equals(memPw)) { // alert
 			response.setCharacterEncoding("UTF-8");
 			response.setContentType("text/html;charset=UTF-8");
@@ -57,7 +64,7 @@ public class MemberMyUpdateController {
 			dto.setMemAddr(memAddr);
 			dto.setMemEmail(memEmail);
 			dto.setMemGender(memGender);
-			dto.setMemId(memId);
+			dto.setMemId(authInfo.getUserId());
 			dto.setMemName(memName);
 			dto.setMemPhone1(memPhone1);
 			dto.setMemPhone2(memPhone2);

@@ -27,7 +27,7 @@ $(function() {
 고객 이름 :  <input type="text" name="memName"/><br/>
 고객 생년월일 :  <input type="datetime-Local" name="memBirth"/><br/>
 고객 성별 : <input type="radio" name="memGender" value="F" checked /> 여자
-<input type="radio" name="memGender" value="M"  /> 남자<br/>
+					<input type="radio" name="memGender" value="M"  /> 남자<br/>
 고객 가입일 :  <input type="date" name="memRegidate"/><br/>
 고객 아이디 :  <input type="text" name="memId"/><br/>
 고객 비밀번호 :  <input type="password" name="memPw" id="memPw" required="required" /><br/>

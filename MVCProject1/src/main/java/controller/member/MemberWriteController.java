@@ -22,7 +22,7 @@ public class MemberWriteController {
 		String memEmail = request.getParameter("memEmail");
 		String memGender = request.getParameter("memGender");
 		// 문자열 date로 변경
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Date regiDate = null;
 		String memRegiDate = request.getParameter("memRegidate");
 		System.out.println(memRegiDate);

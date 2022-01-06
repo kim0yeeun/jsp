@@ -13,7 +13,7 @@
 <form action="memberUpdate.mem" method="get" name="frm" id="frm">
 고객 번호 : <input type="text" value="${memberDTO.memNum}" name="memNum"  readonly ="readonly" required="required"/>:번호자동부여<br/>
 고객 이름 :  <input type="text" value="${memberDTO.memName}" name="memName" /><br/>
-고객 생년월일 :  <input type="datetime-Local" value="<fmt:formatDate value ='${memberDTO.memBirth }' pattern='yyyy-mm-dd'/>T00:00" name="memBirth"   required="required"/><br/>
+고객 생년월일 :  <input type="datetime-Local" value="<fmt:formatDate value ='${memberDTO.memBirth }' pattern='yyyy-MM-dd'/>T00:00" name="memBirth"   required="required"/><br/>
 고객 성별 : <input type="radio" name="memGender" value="F" 
 																								<c:if test ="${memberDTO.memGender == 'F'}">checked</c:if> /> 여자
 					<input type="radio" name="memGender" value="M" 

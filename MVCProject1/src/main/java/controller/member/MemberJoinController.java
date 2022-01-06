@@ -34,6 +34,7 @@ public class MemberJoinController {
 		case "5" :
 		case "7" :
 		case "9" : memGender = "M"; break;
+		
 		case "2" :
 		case "4" :
 		case "6" :
